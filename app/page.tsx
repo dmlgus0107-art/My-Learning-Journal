@@ -28,37 +28,45 @@ export default async function Home() {
       <div className="mx-auto w-full max-w-[680px] px-5 py-12 sm:py-16">
 
         {/* 헤더 */}
-        <header className="flex items-center justify-between mb-12">
-          <h1 className="text-xl font-semibold tracking-tight text-gray-900">
-            나의 학습 일지
-          </h1>
-          <div className="flex items-center gap-2">
-            {user ? (
-              <>
-                <Link
-                  href="/admin/new"
-                  className="inline-flex items-center justify-center h-11 px-4 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
-                >
-                  새 글 쓰기
-                </Link>
-                <form action={logout}>
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center h-11 px-4 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+        <header className="mb-10">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                나의 학습 일지
+              </h1>
+              <p className="mt-2 text-sm text-gray-400">
+                Claude와 함께 성장하는 개발 기록
+              </p>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              {user ? (
+                <>
+                  <Link
+                    href="/admin/new"
+                    className="inline-flex items-center justify-center h-11 px-4 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
                   >
-                    로그아웃
-                  </button>
-                </form>
-              </>
-            ) : (
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center h-11 px-4 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
-              >
-                로그인
-              </Link>
-            )}
+                    새 글 쓰기
+                  </Link>
+                  <form action={logout}>
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center h-11 px-4 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+                    >
+                      로그아웃
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <Link
+                  href="/login"
+                  className="inline-flex items-center justify-center h-11 px-4 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+                >
+                  로그인
+                </Link>
+              )}
+            </div>
           </div>
+          <div className="mt-8 h-px bg-gray-100" />
         </header>
 
         {/* 글 목록 */}
