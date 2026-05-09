@@ -37,6 +37,20 @@ export default function NewPostForm({ action }: Props) {
         />
       </div>
 
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor="tags" className="text-sm font-medium text-gray-700">
+          태그
+          <span className="ml-1.5 text-xs font-normal text-gray-400">쉼표로 구분 (선택)</span>
+        </label>
+        <input
+          id="tags"
+          name="tags"
+          type="text"
+          placeholder="예: Supabase, NextJS, 배포"
+          className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
+        />
+      </div>
+
       <div className="flex gap-2 pt-2">
         <button
           type="submit"
