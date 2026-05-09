@@ -1,9 +1,10 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-import { supabase } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase-server'
 
 export async function createPost(formData: FormData) {
+  const supabase = await createClient()
   const title = formData.get('title') as string
   const content = formData.get('content') as string
 
