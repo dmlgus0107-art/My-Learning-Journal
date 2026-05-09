@@ -41,7 +41,11 @@ export default async function Home() {
                   day: 'numeric',
                 })}
               </p>
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">{post.title}</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                <Link href={`/posts/${post.id}`} className="hover:underline">
+                  {post.title}
+                </Link>
+              </h2>
               <p className="text-gray-600 whitespace-pre-wrap line-clamp-3">{post.content}</p>
             </li>
           ))}
