@@ -8,7 +8,7 @@ export default async function LoginPage({ searchParams }: Props) {
   const { error } = await searchParams
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-5">
+    <div className="min-h-screen flex items-center justify-center px-5">
       <div className="w-full max-w-sm bg-white rounded-2xl border border-gray-100 shadow-sm px-8 py-10">
 
         <h1 className="text-xl font-semibold text-gray-900 text-center mb-8">로그인</h1>

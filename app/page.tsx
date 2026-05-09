@@ -68,7 +68,7 @@ export default async function Home({ searchParams }: Props) {
   const clearTagHref = q ? `/?q=${q}` : '/'
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <div className="mx-auto w-full max-w-[680px] px-5 py-12 sm:py-16">
 
         {/* 헤더 */}

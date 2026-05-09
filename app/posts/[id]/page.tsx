@@ -20,7 +20,7 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound()
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <div className="mx-auto w-full max-w-[680px] px-5 py-12 sm:py-16">
 
         <Link
