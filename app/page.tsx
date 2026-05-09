@@ -24,61 +24,73 @@ export default async function Home() {
   const { data: { user } } = await serverClient.auth.getUser()
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-12">
-      <div className="flex items-center justify-between mb-10">
-        <h1 className="text-3xl font-bold text-gray-900">나의 학습 일지</h1>
-        <div className="flex items-center gap-3">
-          {user ? (
-            <>
-              <Link
-                href="/admin/new"
-                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
-              >
-                새 글 쓰기
-              </Link>
-              <form action={logout}>
-                <button
-                  type="submit"
-                  className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-                >
-                  로그아웃
-                </button>
-              </form>
-            </>
-          ) : (
-            <Link
-              href="/login"
-              className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-            >
-              로그인
-            </Link>
-          )}
-        </div>
-      </div>
+    <div className="min-h-screen bg-white">
+      <div className="mx-auto w-full max-w-[680px] px-5 py-12 sm:py-16">
 
-      {!posts || posts.length === 0 ? (
-        <p className="text-gray-400 text-center mt-20">아직 작성된 글이 없습니다.</p>
-      ) : (
-        <ul className="space-y-6">
-          {posts.map((post: Post) => (
-            <li key={post.id} className="border border-gray-100 rounded-xl p-6 shadow-sm">
-              <p className="text-xs text-gray-400 mb-1">
-                {new Date(post.created_at).toLocaleDateString('ko-KR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </p>
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                <Link href={`/posts/${post.id}`} className="hover:underline">
-                  {post.title}
+        {/* 헤더 */}
+        <header className="flex items-center justify-between mb-12">
+          <h1 className="text-xl font-semibold tracking-tight text-gray-900">
+            나의 학습 일지
+          </h1>
+          <div className="flex items-center gap-2">
+            {user ? (
+              <>
+                <Link
+                  href="/admin/new"
+                  className="inline-flex items-center justify-center h-11 px-4 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
+                >
+                  새 글 쓰기
                 </Link>
-              </h2>
-              <p className="text-gray-600 whitespace-pre-wrap line-clamp-3">{post.content}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </main>
+                <form action={logout}>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center h-11 px-4 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+                  >
+                    로그아웃
+                  </button>
+                </form>
+              </>
+            ) : (
+              <Link
+                href="/login"
+                className="inline-flex items-center justify-center h-11 px-4 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+              >
+                로그인
+              </Link>
+            )}
+          </div>
+        </header>
+
+        {/* 글 목록 */}
+        {!posts || posts.length === 0 ? (
+          <p className="text-center text-gray-400 text-sm mt-24">아직 작성된 글이 없습니다.</p>
+        ) : (
+          <ul className="space-y-3">
+            {posts.map((post: Post) => (
+              <li key={post.id}>
+                <Link
+                  href={`/posts/${post.id}`}
+                  className="block rounded-xl border border-gray-100 bg-white px-6 py-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-gray-200"
+                >
+                  <time className="text-xs text-gray-400 font-medium">
+                    {new Date(post.created_at).toLocaleDateString('ko-KR', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  <h2 className="mt-1.5 text-base font-semibold text-gray-900 leading-snug">
+                    {post.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-gray-500 leading-relaxed line-clamp-2">
+                    {post.content}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
   )
 }

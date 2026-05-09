@@ -8,19 +8,20 @@ export default async function LoginPage({ searchParams }: Props) {
   const { error } = await searchParams
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
-        <h1 className="text-2xl font-bold text-gray-900 mb-8 text-center">로그인</h1>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-5">
+      <div className="w-full max-w-sm bg-white rounded-2xl border border-gray-100 shadow-sm px-8 py-10">
+
+        <h1 className="text-xl font-semibold text-gray-900 text-center mb-8">로그인</h1>
 
         {error === 'invalid' && (
-          <p className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
+          <div className="mb-5 rounded-lg bg-red-50 border border-red-100 px-4 py-3 text-sm text-red-600">
             이메일 또는 비밀번호가 올바르지 않습니다.
-          </p>
+          </div>
         )}
 
         <form action={login} className="flex flex-col gap-4">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="text-sm font-medium text-gray-700">
               이메일
             </label>
             <input
@@ -29,12 +30,13 @@ export default async function LoginPage({ searchParams }: Props) {
               type="email"
               required
               autoComplete="email"
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
+              placeholder="you@example.com"
+              className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
             />
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="password" className="text-sm font-medium text-gray-700">
               비밀번호
             </label>
             <input
@@ -43,18 +45,18 @@ export default async function LoginPage({ searchParams }: Props) {
               type="password"
               required
               autoComplete="current-password"
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
+              className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm text-gray-900 outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
             />
           </div>
 
           <button
             type="submit"
-            className="mt-2 w-full rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
+            className="mt-2 inline-flex items-center justify-center h-11 w-full rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
           >
             로그인
           </button>
         </form>
       </div>
-    </main>
+    </div>
   )
 }

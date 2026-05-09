@@ -3,9 +3,11 @@ import { createPost } from './actions'
 
 export default function NewPostPage() {
   return (
-    <main className="max-w-2xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">새 글 쓰기</h1>
-      <NewPostForm action={createPost} />
-    </main>
+    <div className="min-h-screen bg-white">
+      <div className="mx-auto w-full max-w-[680px] px-5 py-12 sm:py-16">
+        <h1 className="text-xl font-semibold text-gray-900 mb-8">새 글 쓰기</h1>
+        <NewPostForm action={createPost} />
+      </div>
+    </div>
   )
 }

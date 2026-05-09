@@ -20,20 +20,34 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound()
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-12">
-      <Link href="/" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-        ← 목록으로
-      </Link>
+    <div className="min-h-screen bg-white">
+      <div className="mx-auto w-full max-w-[680px] px-5 py-12 sm:py-16">
 
-      <p className="text-xs text-gray-400 mt-8 mb-2">
-        {new Date(post.created_at).toLocaleDateString('ko-KR', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })}
-      </p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">{post.title}</h1>
-      <p className="text-gray-700 whitespace-pre-wrap leading-8">{post.content}</p>
-    </main>
+        <Link
+          href="/"
+          className="inline-flex items-center text-sm text-gray-400 hover:text-gray-900 transition-colors"
+        >
+          ← 목록으로
+        </Link>
+
+        <article className="mt-10">
+          <time className="text-xs text-gray-400 font-medium">
+            {new Date(post.created_at).toLocaleDateString('ko-KR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+          <h1 className="mt-2 text-2xl font-bold text-gray-900 leading-tight sm:text-3xl">
+            {post.title}
+          </h1>
+          <div className="mt-1 h-px bg-gray-100" />
+          <p className="mt-8 text-base text-gray-700 leading-8 whitespace-pre-wrap">
+            {post.content}
+          </p>
+        </article>
+
+      </div>
+    </div>
   )
 }
