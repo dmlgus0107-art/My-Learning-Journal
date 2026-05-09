@@ -8,8 +8,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
-      <body>{children}</body>
+    <html
+      lang="ko"
+      style={{
+        backgroundColor: '#ffffff',
+        backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)',
+        backgroundSize: '22px 22px',
+      }}
+    >
+      <body style={{ backgroundColor: 'transparent' }}>{children}</body>
     </html>
   )
 }
