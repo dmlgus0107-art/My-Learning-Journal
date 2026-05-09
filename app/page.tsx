@@ -35,7 +35,7 @@ export default async function Home() {
                 나의 학습 일지
               </h1>
               <p className="mt-2 text-sm text-gray-400">
-                Claude와 함께 성장하는 개발 기록
+                에코델타 독거노인의 Claude 성장 일기
               </p>
             </div>
             <div className="flex items-center gap-2 shrink-0">
